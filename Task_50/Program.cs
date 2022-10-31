@@ -13,6 +13,11 @@
 
 // 1, 7 -> такого элемента в массиве нет
 
+Console.Write("Введите индекс строки: ");
+int rows = Convert.ToInt32(Console.ReadLine());
+Console.Write("Введите индекс столбца: ");
+int columns = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine();
 
 // Заполнение массива рандомными числами от 1 до 9
 
@@ -48,11 +53,6 @@ void PrintMatrix(int[,] matrix)
     Console.WriteLine();
 }
 
-Console.Write("Введите индекс строки: ");
-int rows = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите индекс столбца: ");
-int colums = Convert.ToInt32(Console.ReadLine());
-
 //Возвращение элемента массива
 
 void ReturnValueElem(int[,] numbers)
@@ -61,9 +61,14 @@ void ReturnValueElem(int[,] numbers)
     {
         for (int j = 0; j < numbers.GetLength(1);)
         {
-            if (rows < numbers.GetLength(0) && colums < numbers.GetLength(1))
-                Console.WriteLine($"Значение элемента на этой позиции: {numbers[rows, colums]}");
-            else Console.WriteLine($"{rows}, {colums} - такого элемента в массиве нет");
+            if (rows < 0 || columns < 0)
+            {
+                Console.WriteLine("Нужно вводить положительный индекс!");
+                Console.WriteLine();
+            }
+            if (rows < numbers.GetLength(0) && columns < numbers.GetLength(1))
+                Console.WriteLine($"Значение элемента на этой позиции: {numbers[rows, columns]}");
+            else Console.WriteLine($"{rows}, {columns} - такого элемента в массиве нет");
             break;
         }
         break;
